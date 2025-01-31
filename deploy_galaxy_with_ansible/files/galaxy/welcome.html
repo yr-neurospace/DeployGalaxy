@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="dist/base.css" type="text/css" />
+    <style>
+        /* neuroborder styles */
+        .warning-box {
+            /* 天蓝色背景 */
+            background-color: rgba(135, 206, 235, 0.5);
+
+            /* 字体清晰 */
+            color: #333;
+            /* 使用清晰字体 */
+            font-family: 'Arial', sans-serif;
+            /* 字体大小 */
+            font-size: 16px;
+            /* 行高，增加可读性 */
+            line-height: 1.5;
+
+            /* 圆角边框 */
+            border-radius: 8px;
+            /* 阴影增加立体感 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+            /* 内边距 */
+            padding: 20px;
+            /* 外边距 */
+            margin: 20px 0;
+
+            /* 警告图标 */
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .warning-box::before {
+            /* 警告图标 */
+            content: '⚠️';
+            /* 图标大小 */
+            font-size: 24px;
+            /* 绝对定位 */
+            position: absolute;
+            /* 图标左边距 */
+            left: 10px;
+            /* 图标垂直居中 */
+            top: 50%;
+            /* 垂直居中 */
+            transform: translateY(-50%);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+
+            /* 适应小屏幕 */
+            .warning-box {
+                padding: 15px;
+                margin: 15px 0;
+                font-size: 14px;
+            }
+
+            /* 适应小屏幕的图标大小 */
+            .warning-box::before {
+                font-size: 20px;
+            }
+        }
+
+        .warning-message {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 整体表格样式 */
+        table {
+            /* 表格宽度 */
+            width: 100%;
+            /* 边框合并 */
+            border-collapse: collapse;
+            /* 文字颜色 */
+            color: #333;
+            /* 表格外边距 */
+            margin: 20px 0;
+            /* 表格阴影 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 表头样式 */
+        th {
+            /* 天蓝色背景 */
+            background-color: #87CEEB;
+            /* 白色字体 */
+            color: #fff;
+            /* 字体加粗 */
+            font-weight: bold;
+            /* 文字左对齐 */
+            text-align: left;
+            /* 内边距 */
+            padding: 8px;
+        }
+
+        /* 单元格样式 */
+        td {
+            /* 内边距 */
+            padding: 8px;
+        }
+
+        /* 隔行换色 */
+        tr:nth-child(even) {
+            /* 浅天蓝色背景 */
+            background-color: #E0FFFF;
+        }
+
+        tr:nth-child(odd) {
+            /* 浅灰色背景 */
+            background-color: #F5F5F5;
+        }
+
+        caption {
+            /* 标题显示在表格上方 */
+            caption-side: top;
+            /* 标题居中显示 */
+            text-align: center;
+            /* 字体大小 */
+            font-size: 1.5em;
+            /* 字体加粗 */
+            font-weight: bold;
+            /* 字体颜色为红色 */
+            color: red;
+            /* 标题与表格的上边距 */
+            padding-top: 0px;
+            /* 标题与表格的下边距 */
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body class="m-0">
+    <div class="py-4">
+        <div class="container">
+            <h2>Hello, <strong>Galaxy</strong> is running!</h2>
+            To customize this page edit <code>static/welcome.html</code>
+            <br>
+            <a target="_blank" href="https://docs.galaxyproject.org/en/latest/admin/config.html"
+                class="btn btn-primary">Configuring Galaxy »</a>
+            <a target="_blank" href="https://galaxyproject.org/admin/tools/add-tool-from-toolshed-tutorial/"
+                class="btn btn-primary">Installing Tools »</a>
+        </div>
+        <br>
+        <div class="container">
+            <p>Take an interactive tour:
+                <a target="_parent" href="../tours/core.galaxy_ui" class="btn btn-secondary btn-sm">Galaxy UI</a>
+                <a target="_parent" href="../tours/core.history" class="btn btn-secondary btn-sm">History</a>
+                <a target="_parent" href="../tours/core.windows" class="btn btn-secondary btn-sm">Window Manager</a>
+                <a target="_parent" href="../tours/core.deferred" class="btn btn-secondary btn-sm">Deferred Datasets</a>
+            </p>
+        </div>
+    </div>
+    <div>
+        <table>
+            <caption>Running Computing and Storage-Intensive Tasks</caption>
+            <thead>
+                <tr>
+                    <th>Tool ID</th>
+                    <th>Tool Version</th>
+                    <th>Destination ID</th>
+                    <th>Handler</th>
+                    <th>State</th>
+                    <th>Job Runner Name</th>
+                    <th>Sum</th>
+                    <th>User ID</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="warning-box">
+        <div class="warning-message">
+            <strong>Warning:</strong> at present, there are <strong>at most</strong> <strong>152</strong> threads,
+            <strong>2 TB</strong> memory space, and <strong>100 TB</strong> disk space available in total for all users.
+            To make sure that your and others' jobs can be run smoothly and successfully (i.e. ensure that storage and
+            computing resources won't be depleted, which may cause the server to crash),
+            <br><br>
+            <strong>PLEASE:</strong>
+            <ol>
+                <li>Run your pipeline as quickly as possible once you have uploaded your datasets, which will be deleted
+                    permanently after several weeks.</li>
+                <li>Once your pipeline has been run successfully, you should download your results as quickly as
+                    possible. Job results will also be cleaned after a few days.</li>
+                <li>There are a great deal of tools available from the <a href="https://toolshed.g2.bx.psu.edu">Galaxy
+                    official repository</a>. You can first search it to see whether some of them can satisfy your
+                    needs and then you can ask your admin to install them instead of developing them from scratch.</li>
+                <li>Many tools do not expose full parameters to users. If needed and feasible, you can ask your admin to
+                    modify them.</li>
+                <li><a href="https://training.galaxyproject.org"> Galaxy training</a> provides a lot of step-by-step
+                    tutorials for you.
+                    You can learn a lot from it from principle to practice. Including how to use Galaxy better,
+                    perform some concrete analyses as well as learn their underlying principles, etc.</li>
+                <li>If you meet any problems, please contact your admin. Of course, you may <strong>Google</strong> it
+                    first!</li>
+                <li>Some pipelines are really computing and storage-intensive (e.g. <strong>ENCODE bulk
+                    RNA-seq/ATAC-seq/ChIP-seq pipeline</strong>). If you intend to run those pipielines, please make
+                    sure that at present no one is running those pipelines and you should notify your admin and other
+                    members to avoid running those pipelines in time; Otherwise, your jobs may be broken down due to
+                    resource exhaustion.</li>
+                <li><strong>The above table will show those computing and storage-intensive jobs that are running at
+                    present. If the above table has listed many jobs, please avoid running any computing and storage-intensive
+                    tasks.</strong></li>
+                <li>You can visit <a href="https://www.neuroborder.com">NeuroBorder</a> to see some cautions and steps
+                    of running some tools or analyses. If some analyses are frequently used by most people, please
+                    contact admin. If true and feasible, it's worth developing and deploying some tools at Galaxy
+                    and publishing some guides at NeuroBorder.</li>
+            </ol>
+        </div>
+    </div>
+    <br><br>
+    <div class="container">
+        <p>
+            <a target="_blank" class="reference" href="http://galaxyproject.org/">
+                Galaxy</a> is an open platform for supporting data intensive
+            research. Galaxy is developed by <a target="_blank" class="reference"
+                href="https://galaxyproject.org/galaxy-team/">The Galaxy Team</a>
+            with the support of <a target="_blank" class="reference"
+                href="https://github.com/galaxyproject/galaxy/blob/dev/CONTRIBUTORS.md">many contributors</a>.
+        </p>
+        <footer>
+            The <a target="_blank" class="reference" href="http://galaxyproject.org/">Galaxy Project</a>
+            is supported in part by <a target="_blank" class="reference" href="http://www.genome.gov">NHGRI</a>,
+            <a target="_blank" class="reference" href="http://www.nsf.gov">NSF</a>,
+            <a target="_blank" class="reference" href="http://www.huck.psu.edu">The Huck Institutes of the Life
+                Sciences</a>,
+            <a target="_blank" class="reference" href="http://www.ics.psu.edu">The Institute for CyberScience at Penn
+                State</a>,
+            and <a target="_blank" class="reference" href="http://www.jhu.edu/">Johns Hopkins University</a>.
+        </footer>
+    </div>
+</body>
+
+</html>
